@@ -44,7 +44,7 @@ function Home() {
                     <Product
                         id="1237"
                         title="Sony Noise Cancelling Headphones WH1000XM3: Wireless Bluetooth Over the Ear Headset with Mic for Phone-Call and Alexa Voice Control - Industry Leading Active Noise"
-                        price="99.99"
+                        price={99.99}
                         image="https://images-na.ssl-images-amazon.com/images/I/51IdLe-%2B6kL._AC_SL1500_.jpg"
                         rating={5}
                     />
