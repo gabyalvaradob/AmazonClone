@@ -28,9 +28,9 @@ const removeFromBasket = () => {
                     ))}
                 </div>
                 {!hideButton && (
-                     <button onClick={removeFromBasket}>Remove from Basket</button>
+                     <button onClick={removeFromBasket}>Quitar del carrito</button>
                 )}
-                <button onClick={removeFromBasket}>Quitar del carrito</button>
+                
             </div>
         </div>
         
