@@ -1,16 +1,57 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Home.css';
 import Product from './Product';
 
 function Home() {
+    useEffect(() => (
+        slider(0)
+    ), [])
+
     return (
         <div className="home">
             <div className="home_container">
+            <div className="home_sliderContainer">
+                    <div className="home_slide">
+                        <img
+                            className="home_image "
+                            src="https://images-na.ssl-images-amazon.com/images/G/33/kindle/journeys/ZGFmYzViNGEt/ZGFmYzViNGEt-OTliNDJlZWQt-w1500._CB407882704_.jpg"
+                            alt="image1" />
+                    </div>
+                    <div className="home_slide">
+                        <img
+                            className="home_image"
+                            src="https://images-na.ssl-images-amazon.com/images/G/33/kindle/journeys/NDg3YjhkYzYt/NDg3YjhkYzYt-ODZlYzg1MmQt-w1500._CB405481174_.jpg"
+                            alt="image2" />
+                    </div>
+                    <div className="home_slide">
+                        <img
+                            className="home_image"
+                            src="https://images-na.ssl-images-amazon.com/images/G/33/digital/video/merch/2020/TV/THBY_S2_00000_GWBleedingHero_1500x600_POST_Final_noLocale_PVD5401._CB407881564_.jpg"
+                            alt="image3" />
+                    </div>
+                    <div className="home_slide">
+                        <img
+                            className="home_image"
+                            src="https://images-na.ssl-images-amazon.com/images/G/33/img20/BacktoSchool/BKTOSCHOOL_REFRESCA_DSKHERO_1500x600._CB409103188_.jpg"
+                            alt="image4" />
+                    </div>
+                    <div className="home_slide">
+                        <img
+                            className="home_image"
+                            src="https://images-na.ssl-images-amazon.com/images/G/33/digital/music/Merch/Gateway/Hero/Engagement/2020/W37/090420_MX_DesktopHeroMaquinaDelTiempoMX_EGM_GW_GH_1500x600._CB404907953_.jpg"
+                            alt="image5" />
+                    </div>
+                </div>
 
-                <img className="home_image"
+                {/* <img className="home_image"
                     src="https://images-na.ssl-images-amazon.com/images/G/33/kindle/journeys/ZGFmYzViNGEt/ZGFmYzViNGEt-OTliNDJlZWQt-w1500._CB407882704_.jpg"
                     alt="homeimage"
-                />
+
+                    //carrousel : https://images-na.ssl-images-amazon.com/images/G/33/kindle/journeys/NDg3YjhkYzYt/NDg3YjhkYzYt-ODZlYzg1MmQt-w1500._CB405481174_.jpg
+                    // https://images-na.ssl-images-amazon.com/images/G/33/digital/video/merch/2020/TV/THBY_S2_00000_GWBleedingHero_1500x600_POST_Final_noLocale_PVD5401._CB407881564_.jpg
+                    // https://images-na.ssl-images-amazon.com/images/G/33/img20/BacktoSchool/BKTOSCHOOL_REFRESCA_DSKHERO_1500x600._CB409103188_.jpg
+                    // https://images-na.ssl-images-amazon.com/images/G/33/digital/music/Merch/Gateway/Hero/Engagement/2020/W37/090420_MX_DesktopHeroMaquinaDelTiempoMX_EGM_GW_GH_1500x600._CB404907953_.jpg
+                /> */}
                 <div className="home_row">
                     <Product
                         id="1234"
@@ -69,9 +110,46 @@ function Home() {
                     />
 
                 </div>
+                {/* </div> */}
             </div>
         </div>
     )
 }
+
+function slider(counter) {
+    const slides = document.querySelectorAll(".home_image");
+
+    slides.forEach((slide, index) => {
+        if (index !== counter) {
+            slide.style.visibility = `hidden`
+            slide.classList.add(`image-${index}`)
+        }
+    })
+    moveCarousal(counter, slides, slides.length)
+}
+
+function moveCarousal(counter, slides, len) {
+
+    if (slides) {
+        if (counter >= len - 1)
+            counter = 0
+        else
+            counter += 1
+
+        slides.forEach((slide, index) => {
+            if (index === counter) {
+                slide.style.visibility = `visible`
+            }
+            else {
+                slide.style.visibility = `hidden`
+            }
+        })
+
+    }
+    setTimeout(() => {
+        moveCarousal(counter, slides, len);
+    }, 3500)
+}
+
 
 export default Home

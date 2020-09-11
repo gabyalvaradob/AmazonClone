@@ -6,12 +6,11 @@ import CheckoutProduct from './CheckoutProduct';
 
 function Checkout() {
     const [{ basket, user }, dispatch] = useStateValue();
-
     return (
         <div className="checkout">
             <div className="checkout_left">
                 <img className="checkout_ad"
-                    src="https://images-na.ssl-images-amazon.com/images/G/33/img20/Prime/Nonshoppers/Promo2/PrimeNewsletter_3000x540._CB1591815874_.jpg"
+                    src="https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492668_.jpg"
                     alt="adcheckout" />
                 <div>
                     <h3>Hello, {user?.email}</h3>
@@ -19,6 +18,7 @@ function Checkout() {
 
                     {/* Checkout Product */}
                     {basket.map(item => (
+                       
                         <CheckoutProduct 
                         id={item.id}
                         title={item.title}
@@ -26,6 +26,7 @@ function Checkout() {
                         price={item.price}
                         rating={item.rating}
                         />
+                        
                     ))}
                 </div>
 
